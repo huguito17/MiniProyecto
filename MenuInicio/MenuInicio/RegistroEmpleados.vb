@@ -8,7 +8,7 @@ Public Class RegistroEmpleados
         Llenar()
         llenarSexo()
         llenarPuesto()
-        BloquearDatosPlan()
+        'BloquearDatosPlan()
     End Sub
 
     ' Funcion para llenar el combo de los puestos
@@ -40,7 +40,7 @@ Public Class RegistroEmpleados
 
         'End If
         Try
-            If Me.ValidateChildren And txtIdentidadRegistro.Text <> String.Empty Or IsNumeric(txtIdentidadRegistro.Text) And txtNombreRegistro.Text <> String.Empty And txtDireccionRegistro.Text <> String.Empty And txtDireccionRegistro.Text <> String.Empty And txtEdadRegistro.Text <> String.Empty Or IsNumeric(txtEdadRegistro.Text) Then
+            If Me.ValidateChildren And txtIdentidadRegistro.Text <> String.Empty And IsNumeric(txtIdentidadRegistro.Text) And txtNombreRegistro.Text <> String.Empty And Not IsNumeric(txtNombreRegistro.Text) And txtApellidosRegistro.Text <> String.Empty And Not IsNumeric(txtApellidosRegistro.Text) And txtDireccionRegistro.Text <> String.Empty And Not IsNumeric(txtDireccionRegistro.Text) And txtEdadRegistro.Text <> String.Empty And IsNumeric(txtEdadRegistro.Text) Then
                 Dim guardar As String = "insert into empleados values('" + txtIdentidadRegistro.Text + "','" + txtNombreRegistro.Text + "','" + txtApellidosRegistro.Text + "','" + txtDireccionRegistro.Text + "','" + txtEdadRegistro.Text + "','" + cmbSexo.Text + "','" + cmbPuesto.Text + "')"
                 If (conexion.insertar(guardar)) Then
                     MessageBox.Show("Guardado")
@@ -62,15 +62,19 @@ Public Class RegistroEmpleados
 
     Private Sub btnModificarRegistro_Click(sender As Object, e As EventArgs) Handles btnModificarRegistro.Click
         Try
-            Dim modificar As String = "identidad='" + txtIdentidadRegistro.Text + "', empNom='" + txtNombreRegistro.Text + "', empApe='" + txtApellidosRegistro.Text + "', direccion='" + txtDireccionRegistro.Text + "', edad='" + txtEdadRegistro.Text + "', sexo='" + cmbSexo.Text + "', puesto='" + cmbPuesto.Text + "'"
-            If (conexion.modificar(" empleados ", modificar, " identidad= " + txtIdentidadRegistro.Text)) Then
-                MessageBox.Show("Se ha actualizado satisfactoreamente")
-                Llenar()
-                Limpiar()
-                conexion.conexion.Close()
+            If Me.ValidateChildren And txtNombreRegistro.Text <> String.Empty And Not IsNumeric(txtNombreRegistro.Text) And txtApellidosRegistro.Text <> String.Empty And Not IsNumeric(txtApellidosRegistro.Text) And txtDireccionRegistro.Text <> String.Empty And Not IsNumeric(txtDireccionRegistro.Text) And txtEdadRegistro.Text <> String.Empty And IsNumeric(txtEdadRegistro.Text) Then
+                Dim modificar As String = "identidad='" + txtIdentidadRegistro.Text + "', empNom='" + txtNombreRegistro.Text + "', empApe='" + txtApellidosRegistro.Text + "', direccion='" + txtDireccionRegistro.Text + "', edad='" + txtEdadRegistro.Text + "', sexo='" + cmbSexo.Text + "', puesto='" + cmbPuesto.Text + "'"
+                If (conexion.modificar(" empleados ", modificar, " identidad= " + txtIdentidadRegistro.Text)) Then
+                    MessageBox.Show("Se ha actualizado satisfactoreamente")
+                    Llenar()
+                    Limpiar()
+                    conexion.conexion.Close()
+                Else
+                    MessageBox.Show("Error al actualizar los datos")
+                    conexion.conexion.Close()
+                End If
             Else
-                MessageBox.Show("Error al actualizar los datos")
-                conexion.conexion.Close()
+                MessageBox.Show("Revise los datos Ingresados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -118,12 +122,6 @@ Public Class RegistroEmpleados
         End If
     End Sub
 
-    Private Sub txtIdentidadRegistro_MouseHover(sender As Object, e As EventArgs)
-        ToolTip.SetToolTip(txtIdentidadRegistro, "Ingrese el numero de identidad")
-        ToolTip.ToolTipTitle = "Identidad"
-        ToolTip.ToolTipIcon = ToolTipIcon.Info
-    End Sub
-
     Private Sub txtNombreRegistro_MouseHover(sender As Object, e As EventArgs) Handles txtNombreRegistro.MouseHover
         ToolTip.SetToolTip(txtNombreRegistro, "Agregue el nombre del empleado")
         ToolTip.ToolTipTitle = "Nombre Empleado"
@@ -155,7 +153,7 @@ Public Class RegistroEmpleados
     End Sub
 
     Private Sub cmbPuesto_MouseHover(sender As Object, e As EventArgs) Handles cmbPuesto.MouseHover
-        ToolTip.SetToolTip(txtApellidosRegistro, "Elija el puesto del empleado")
+        ToolTip.SetToolTip(cmbPuesto, "Elija el puesto del empleado")
         ToolTip.ToolTipTitle = "Puesto del Empleado"
         ToolTip.ToolTipIcon = ToolTipIcon.Info
     End Sub
@@ -193,30 +191,17 @@ Public Class RegistroEmpleados
             MsgBox(ex.Message)
         End Try
     End Sub
-
     Private Sub txtIdentidadRegistro_Validating(sender As Object, e As CancelEventArgs) Handles txtIdentidadRegistro.Validating
         If DirectCast(sender, TextBox).Text.Length = 13 Then
             Me.ErrorValidacion.SetError(sender, "")
         Else
-            Me.ErrorValidacion.SetError(sender, "Debe agregar el nombre del empleado")
+            Me.ErrorValidacion.SetError(sender, "Debe agregar la identidad del empleado")
         End If
-    End Sub
-
-    Private Sub dtsEmpleados_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtsEmpleados.CellClick
-        Dim FilaActual As Integer
-        FilaActual = dtsEmpleados.CurrentRow.Index
-        txtIdentidadRegistro.Text = dtsEmpleados.Rows(FilaActual).Cells(0).Value
-        txtNombreRegistro.Text = dtsEmpleados.Rows(FilaActual).Cells(1).Value
-        txtApellidosRegistro.Text = dtsEmpleados.Rows(FilaActual).Cells(2).Value
-        txtDireccionRegistro.Text = dtsEmpleados.Rows(FilaActual).Cells(3).Value
-        txtEdadRegistro.Text = dtsEmpleados.Rows(FilaActual).Cells(4).Value
-        cmbSexo.Text = dtsEmpleados.Rows(FilaActual).Cells(5).Value
-        cmbPuesto.Text = dtsEmpleados.Rows(FilaActual).Cells(6).Value
     End Sub
 
     Private Sub buscar()
         Try
-            dt = conexion.busqueda(" empleados ", " identidad like '%" + txtIdentidadRegistro.Text + "%'")
+            dt = conexion.busqueda(" empleados ", " identidad like '%" + txtBuscar.Text + "%'")
             If dt.Rows.Count <> 0 Then
                 dtsEmpleados.DataSource = dt
                 conexion.conexion.Close()
@@ -229,21 +214,21 @@ Public Class RegistroEmpleados
         End Try
     End Sub
 
+
     Private Sub txtBuscar_TextChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
         buscar()
     End Sub
 
     Private Sub btnLimpiarRegistro_Click(sender As Object, e As EventArgs) Handles btnLimpiarRegistro.Click
         Limpiar()
-        cmbSexo.Text = ""
-        cmbPuesto.Text = ""
+        cmbSexo.Text = "Masculino"
     End Sub
 
     Private Sub txtBuscar_Validating(sender As Object, e As CancelEventArgs) Handles txtBuscar.Validating
         If DirectCast(sender, TextBox).Text.Length = 13 Then
             Me.ErrorValidacion.SetError(sender, "")
         Else
-            Me.ErrorValidacion.SetError(sender, "Debe agregar el nombre del empleado")
+            Me.ErrorValidacion.SetError(sender, "Debe agregar la identidad del empleado")
         End If
     End Sub
 
@@ -259,7 +244,7 @@ Public Class RegistroEmpleados
         If DirectCast(sender, TextBox).Text.Length = 8 Then
             Me.ErrorValidacion.SetError(sender, "")
         Else
-            Me.ErrorValidacion.SetError(sender, "Debe agregar el nombre del empleado")
+            Me.ErrorValidacion.SetError(sender, "Debe agregar el numero de telefono")
         End If
     End Sub
 
@@ -310,4 +295,246 @@ Public Class RegistroEmpleados
         limpiarDatosPlan()
     End Sub
 
+    Private Sub dtsEmpleados_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtsEmpleados.CellContentClick
+
+    End Sub
+
+    Private Sub dtsEmpleados_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtsEmpleados.CellClick
+        Dim FilaActual As Integer
+        FilaActual = dtsEmpleados.CurrentRow.Index
+        txtIdentidadRegistro.Text = dtsEmpleados.Rows(FilaActual).Cells(0).Value
+        txtNombreRegistro.Text = dtsEmpleados.Rows(FilaActual).Cells(1).Value
+        txtApellidosRegistro.Text = dtsEmpleados.Rows(FilaActual).Cells(2).Value
+        txtDireccionRegistro.Text = dtsEmpleados.Rows(FilaActual).Cells(3).Value
+        txtEdadRegistro.Text = dtsEmpleados.Rows(FilaActual).Cells(4).Value
+        cmbSexo.Text = dtsEmpleados.Rows(FilaActual).Cells(5).Value
+        cmbPuesto.Text = dtsEmpleados.Rows(FilaActual).Cells(6).Value
+
+
+        limpiarDatosPlan()
+        If cmbPuesto.SelectedIndex = 5 Then
+            limpiarDatosPlan()
+            txtMarca.Text = "Samsung"
+            txtPlan.Text = "38 dolares"
+            txtDescripcion.Text = "Plan Gerente: Llamadas Ilimitadas, 10GB Internet, Mensajes ilimitados"
+
+        End If
+
+        If cmbPuesto.SelectedIndex = 7 Then
+            limpiarDatosPlan()
+            txtMarca.Text = "Huawei"
+            txtPlan.Text = "28 dolares"
+            txtDescripcion.Text = "Plan Jefes: Llamadas ilimitadas, 5GB Internet, Mensajes ilimitados"
+
+        End If
+
+        If cmbPuesto.SelectedIndex = 4 Then
+            limpiarDatosPlan()
+            txtMarca.Text = "Huawei"
+            txtPlan.Text = "20 dolares"
+            txtDescripcion.Text = "Plan de mas cargos: Llamadas ilimitadas, 2GB de interet"
+
+        End If
+
+        If cmbPuesto.SelectedIndex = 10 Then
+            limpiarDatosPlan()
+            txtMarca.Text = "Huawei"
+            txtPlan.Text = "20 dolares"
+            txtDescripcion.Text = "Plan de mas cargos: Llamadas ilimitadas, 2GB de interet"
+
+        End If
+
+        If cmbPuesto.SelectedIndex = 0 Then
+            limpiarDatosPlan()
+
+
+            MessageBox.Show("Este puesto no aplica a un plan", "No Aplica", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+
+        End If
+
+        If cmbPuesto.SelectedIndex = 15 Then
+            limpiarDatosPlan()
+
+            MessageBox.Show("Este puesto no aplica a un plan", "No Aplica", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        End If
+
+        If cmbPuesto.SelectedIndex = 13 Then
+
+            limpiarDatosPlan()
+
+            MessageBox.Show("Este puesto no aplica a un plan", "No Aplica", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+
+        End If
+
+        If cmbPuesto.SelectedIndex = 12 Then
+
+            limpiarDatosPlan()
+
+            MessageBox.Show("Este puesto no aplica a un plan", "No Aplica", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+
+        End If
+
+        If cmbPuesto.SelectedIndex = 2 Then
+            limpiarDatosPlan()
+
+
+            MessageBox.Show("Este puesto no aplica a un plan", "No Aplica", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+
+        End If
+
+        If cmbPuesto.SelectedIndex = 14 Then
+            limpiarDatosPlan()
+            txtMarca.Text = "Huawei"
+            txtPlan.Text = "20 dolares"
+            txtDescripcion.Text = "Plan de mas cargos: Llamadas ilimitadas, 2GB de interet"
+
+        End If
+
+        If cmbPuesto.SelectedIndex = 8 Then
+            limpiarDatosPlan()
+            txtMarca.Text = "Huawei"
+            txtPlan.Text = "28 dolares"
+            txtDescripcion.Text = "Plan Jefes: Llamadas ilimitadas, 5GB Internet, Mensajes ilimitados"
+
+        End If
+
+        If cmbPuesto.SelectedIndex = 1 Then
+            limpiarDatosPlan()
+
+
+            MessageBox.Show("Este puesto no aplica a un plan", "No Aplica", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+
+        End If
+
+        If cmbPuesto.SelectedIndex = 3 Then
+            limpiarDatosPlan()
+
+
+            MessageBox.Show("Este puesto no aplica a un plan", "No Aplica", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+
+        End If
+
+        If cmbPuesto.SelectedIndex = 6 Then
+            limpiarDatosPlan()
+            txtMarca.Text = "Huawei"
+            txtPlan.Text = "28 dolares"
+            txtDescripcion.Text = "Plan Jefes: Llamadas ilimitadas, 5GB Internet, Mensajes ilimitados"
+
+        End If
+
+
+        If cmbPuesto.SelectedIndex = 9 Then
+            limpiarDatosPlan()
+            txtMarca.Text = "Huawei"
+            txtPlan.Text = "28 dolares"
+            txtDescripcion.Text = "Plan Jefes: Llamadas ilimitadas, 5GB Internet, Mensajes ilimitados"
+
+        End If
+
+        If cmbPuesto.SelectedIndex = 11 Then
+            limpiarDatosPlan()
+            txtMarca.Text = "Huawei"
+            txtPlan.Text = "20 dolares"
+            txtDescripcion.Text = "Plan de mas cargos: Llamadas ilimitadas, 2GB de interet"
+
+        End If
+    End Sub
+
+    Private Sub btnGuardarRegistro_MouseHover(sender As Object, e As EventArgs) Handles btnGuardarRegistro.MouseHover
+        ToolTip.SetToolTip(btnGuardarRegistro, "Guardar datos del empleado")
+        ToolTip.ToolTipTitle = "Guardar Registro"
+        ToolTip.ToolTipIcon = ToolTipIcon.Info
+    End Sub
+
+    Private Sub btnModificarRegistro_MouseHover(sender As Object, e As EventArgs) Handles btnModificarRegistro.MouseHover
+        ToolTip.SetToolTip(btnModificarRegistro, "Modificar datos del empleado")
+        ToolTip.ToolTipTitle = "Guardar Modificacion"
+        ToolTip.ToolTipIcon = ToolTipIcon.Info
+    End Sub
+
+    Private Sub btnLimpiarRegistro_MouseHover(sender As Object, e As EventArgs) Handles btnLimpiarRegistro.MouseHover
+        ToolTip.SetToolTip(btnLimpiarRegistro, "Limpiar celdas")
+        ToolTip.ToolTipTitle = "Limpiar"
+        ToolTip.ToolTipIcon = ToolTipIcon.Info
+    End Sub
+
+    Private Sub btnGuardar_MouseHover(sender As Object, e As EventArgs) Handles btnGuardar.MouseHover
+        ToolTip.SetToolTip(btnGuardar, "Guardar Solicitud de plan")
+        ToolTip.ToolTipTitle = "Guardar Solicitud"
+        ToolTip.ToolTipIcon = ToolTipIcon.Info
+    End Sub
+
+    Private Sub btnLimpiar_MouseHover(sender As Object, e As EventArgs) Handles btnLimpiar.MouseHover
+        ToolTip.SetToolTip(btnLimpiar, "Limpiar Celdas")
+        ToolTip.ToolTipTitle = "Limpiar"
+        ToolTip.ToolTipIcon = ToolTipIcon.Info
+    End Sub
+
+    Private Sub txtMarca_MouseHover(sender As Object, e As CancelEventArgs) Handles txtMarca.Validating
+        ToolTip.SetToolTip(txtMarca, "Marca del telefono")
+        ToolTip.ToolTipTitle = "Marca"
+        ToolTip.ToolTipIcon = ToolTipIcon.Info
+    End Sub
+
+    Private Sub txtPlan_MouseHover(sender As Object, e As CancelEventArgs) Handles txtPlan.Validating
+        ToolTip.SetToolTip(txtPlan, "Valor del Plan")
+        ToolTip.ToolTipTitle = "Plan"
+        ToolTip.ToolTipIcon = ToolTipIcon.Info
+    End Sub
+
+    Private Sub txtDescripcion_MouseHover(sender As Object, e As CancelEventArgs) Handles txtDescripcion.Validating
+        ToolTip.SetToolTip(txtDescripcion, "Descripción del plan")
+        ToolTip.ToolTipTitle = "Descripción"
+        ToolTip.ToolTipIcon = ToolTipIcon.Info
+    End Sub
+
+    Private Sub txtEdadRegistro_Validating(sender As Object, e As CancelEventArgs) Handles txtEdadRegistro.Validating
+        If DirectCast(sender, TextBox).Text.Length > 0 Then
+            Me.ErrorValidacion.SetError(sender, "")
+        Else
+            Me.ErrorValidacion.SetError(sender, "Es un campo obligatorio")
+        End If
+    End Sub
+
+    Private Sub txtIdentidadRegistro_MouseHover(sender As Object, e As EventArgs) Handles txtIdentidadRegistro.MouseHover
+        ToolTip.SetToolTip(txtIdentidadRegistro, "Ingrese la identidad del empleado")
+        ToolTip.ToolTipTitle = "Identidad"
+        ToolTip.ToolTipIcon = ToolTipIcon.Info
+    End Sub
+
+    Private Sub txtBuscar_MouseHover(sender As Object, e As EventArgs) Handles txtBuscar.MouseHover
+        ToolTip.SetToolTip(txtBuscar, "Busqueda por N° identidad")
+        ToolTip.ToolTipTitle = "Identidad a buscar"
+        ToolTip.ToolTipIcon = ToolTipIcon.Info
+    End Sub
+
+    Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
+        Try
+            If Me.ValidateChildren And txtIdentidadRegistro.Text <> String.Empty And IsNumeric(txtIdentidadRegistro.Text) And txtNumero.Text <> String.Empty And IsNumeric(txtNumero.Text) Then
+                Dim guardar As String = "insert into planes values('" + txtNumero.Text + "','" + txtMarca.Text + "','" + txtPlan.Text + "','" + txtDescripcion.Text + "','" + txtIdentidadRegistro.Text + "')"
+                If (conexion.insertar(guardar)) Then
+                    MessageBox.Show("Guardado")
+                    Llenar()
+                    Limpiar()
+                    conexion.conexion.Close()
+                Else
+                    MessageBox.Show("Error al guardar")
+                    conexion.conexion.Close()
+                End If
+            Else
+                MessageBox.Show("Revise los datos Ingresados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        limpiarDatosPlan()
+        txtBuscar.Text = ""
+    End Sub
 End Class

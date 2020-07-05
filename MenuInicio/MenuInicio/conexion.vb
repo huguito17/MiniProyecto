@@ -1,6 +1,6 @@
-﻿Imports System.Data
+﻿'Imports System.Data
 Imports System.Data.SqlClient
-Imports System.Windows.Forms
+'Imports System.Windows.Forms
 Public Class conexion
 
     Public conexion As SqlConnection = New SqlConnection("Data Source=localhost\SQLEXPRESS; Initial Catalog=BaseEmpleados; Integrated Security=True")

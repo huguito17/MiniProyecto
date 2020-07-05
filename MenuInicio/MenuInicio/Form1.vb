@@ -10,7 +10,8 @@ Public Class Menu
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Me.WindowState = FormWindowState.Normal
+        Me.Size = New System.Drawing.Size(975, 550)
     End Sub
 
     Private Sub btnMinimizar_Click(sender As Object, e As EventArgs) Handles btnMinimizar.Click
@@ -30,7 +31,7 @@ Public Class Menu
         If PanelLateral.Width = 165 Then
             TimerOcultar.Enabled = True
             Me.Size = New System.Drawing.Size(852, 550)
-            Me.WindowState = FormWindowState.Normal
+
         ElseIf PanelLateral.Width = 45 Then
             TimerMostrar.Enabled = True
             Me.Size = New System.Drawing.Size(975, 550)
@@ -74,5 +75,21 @@ Public Class Menu
         Me.PanelForms.Controls.Add(frm)
         Me.PanelForms.Tag = frm
         frm.Show()
+    End Sub
+
+    Private Sub panelSuperior_Paint(sender As Object, e As PaintEventArgs) Handles panelSuperior.Paint
+
+    End Sub
+
+    Private Sub PanelForms_Paint(sender As Object, e As PaintEventArgs)
+
+    End Sub
+
+    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        Dim opcion As DialogResult
+        opcion = MessageBox.Show("¿Desea salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If opcion = DialogResult.Yes Then
+            Me.Close()
+        End If
     End Sub
 End Class

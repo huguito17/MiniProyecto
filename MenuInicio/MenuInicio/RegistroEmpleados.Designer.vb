@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class RegistroEmpleados
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,9 +20,12 @@ Partial Class RegistroEmpleados
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RegistroEmpleados))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.dtsEmpleados = New System.Windows.Forms.DataGridView()
         Me.txtNombreRegistro = New System.Windows.Forms.TextBox()
@@ -73,33 +76,50 @@ Partial Class RegistroEmpleados
         '
         Me.GroupBox1.Controls.Add(Me.dtsEmpleados)
         Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.GroupBox1.Location = New System.Drawing.Point(18, 454)
+        Me.GroupBox1.Location = New System.Drawing.Point(18, 445)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.GroupBox1.Size = New System.Drawing.Size(1176, 295)
+        Me.GroupBox1.Size = New System.Drawing.Size(1164, 295)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Tabla Empleados"
         '
         'dtsEmpleados
         '
         Me.dtsEmpleados.AllowUserToAddRows = False
         Me.dtsEmpleados.AllowUserToDeleteRows = False
-        Me.dtsEmpleados.AllowUserToOrderColumns = True
+        Me.dtsEmpleados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.dtsEmpleados.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.dtsEmpleados.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDark
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.MenuText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Brown
+        Me.dtsEmpleados.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.dtsEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtsEmpleados.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.dtsEmpleados.EnableHeadersVisualStyles = False
         Me.dtsEmpleados.GridColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.dtsEmpleados.Location = New System.Drawing.Point(9, 29)
+        Me.dtsEmpleados.Location = New System.Drawing.Point(14, 19)
         Me.dtsEmpleados.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.dtsEmpleados.Name = "dtsEmpleados"
         Me.dtsEmpleados.ReadOnly = True
+        Me.dtsEmpleados.RowHeadersVisible = False
         Me.dtsEmpleados.RowHeadersWidth = 51
-        Me.dtsEmpleados.Size = New System.Drawing.Size(1148, 257)
-        Me.dtsEmpleados.TabIndex = 0
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White
+        Me.dtsEmpleados.RowsDefaultCellStyle = DataGridViewCellStyle4
+        Me.dtsEmpleados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dtsEmpleados.Size = New System.Drawing.Size(1142, 258)
+        Me.dtsEmpleados.TabIndex = 1
         '
         'txtNombreRegistro
         '
-        Me.txtNombreRegistro.Location = New System.Drawing.Point(94, 88)
+        Me.txtNombreRegistro.Location = New System.Drawing.Point(94, 80)
         Me.txtNombreRegistro.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtNombreRegistro.Name = "txtNombreRegistro"
         Me.txtNombreRegistro.Size = New System.Drawing.Size(223, 26)
@@ -107,7 +127,7 @@ Partial Class RegistroEmpleados
         '
         'txtApellidosRegistro
         '
-        Me.txtApellidosRegistro.Location = New System.Drawing.Point(94, 142)
+        Me.txtApellidosRegistro.Location = New System.Drawing.Point(94, 122)
         Me.txtApellidosRegistro.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtApellidosRegistro.Name = "txtApellidosRegistro"
         Me.txtApellidosRegistro.Size = New System.Drawing.Size(223, 26)
@@ -115,7 +135,7 @@ Partial Class RegistroEmpleados
         '
         'txtDireccionRegistro
         '
-        Me.txtDireccionRegistro.Location = New System.Drawing.Point(94, 192)
+        Me.txtDireccionRegistro.Location = New System.Drawing.Point(94, 172)
         Me.txtDireccionRegistro.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtDireccionRegistro.Multiline = True
         Me.txtDireccionRegistro.Name = "txtDireccionRegistro"
@@ -124,9 +144,9 @@ Partial Class RegistroEmpleados
         '
         'txtEdadRegistro
         '
-        Me.txtEdadRegistro.Location = New System.Drawing.Point(94, 282)
+        Me.txtEdadRegistro.Location = New System.Drawing.Point(94, 262)
         Me.txtEdadRegistro.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.txtEdadRegistro.MaxLength = 100
+        Me.txtEdadRegistro.MaxLength = 3
         Me.txtEdadRegistro.Name = "txtEdadRegistro"
         Me.txtEdadRegistro.Size = New System.Drawing.Size(223, 26)
         Me.txtEdadRegistro.TabIndex = 7
@@ -149,11 +169,11 @@ Partial Class RegistroEmpleados
         Me.GroupBox2.Controls.Add(Me.Label1)
         Me.GroupBox2.Controls.Add(Me.txtNombreRegistro)
         Me.GroupBox2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.GroupBox2.Location = New System.Drawing.Point(18, 17)
+        Me.GroupBox2.Location = New System.Drawing.Point(18, 18)
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.GroupBox2.Size = New System.Drawing.Size(501, 428)
+        Me.GroupBox2.Size = New System.Drawing.Size(501, 406)
         Me.GroupBox2.TabIndex = 9
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos del Empleado"
@@ -161,6 +181,8 @@ Partial Class RegistroEmpleados
         'txtIdentidadRegistro
         '
         Me.txtIdentidadRegistro.Location = New System.Drawing.Point(94, 35)
+        Me.txtIdentidadRegistro.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txtIdentidadRegistro.MaxLength = 13
         Me.txtIdentidadRegistro.Name = "txtIdentidadRegistro"
         Me.txtIdentidadRegistro.Size = New System.Drawing.Size(223, 26)
         Me.txtIdentidadRegistro.TabIndex = 15
@@ -169,7 +191,7 @@ Partial Class RegistroEmpleados
         '
         Me.cmbSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbSexo.FormattingEnabled = True
-        Me.cmbSexo.Location = New System.Drawing.Point(94, 332)
+        Me.cmbSexo.Location = New System.Drawing.Point(94, 312)
         Me.cmbSexo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmbSexo.Name = "cmbSexo"
         Me.cmbSexo.Size = New System.Drawing.Size(223, 28)
@@ -179,7 +201,7 @@ Partial Class RegistroEmpleados
         '
         Me.cmbPuesto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbPuesto.FormattingEnabled = True
-        Me.cmbPuesto.Location = New System.Drawing.Point(94, 380)
+        Me.cmbPuesto.Location = New System.Drawing.Point(94, 360)
         Me.cmbPuesto.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmbPuesto.Name = "cmbPuesto"
         Me.cmbPuesto.Size = New System.Drawing.Size(223, 28)
@@ -191,48 +213,66 @@ Partial Class RegistroEmpleados
         Me.GroupBox3.Controls.Add(Me.btnModificarRegistro)
         Me.GroupBox3.Controls.Add(Me.btnGuardarRegistro)
         Me.GroupBox3.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.GroupBox3.Location = New System.Drawing.Point(354, 212)
+        Me.GroupBox3.Location = New System.Drawing.Point(354, 21)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(138, 208)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.GroupBox3.Size = New System.Drawing.Size(138, 368)
         Me.GroupBox3.TabIndex = 10
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Operaciones"
         '
         'btnLimpiarRegistro
         '
+        Me.btnLimpiarRegistro.BackgroundImage = CType(resources.GetObject("btnLimpiarRegistro.BackgroundImage"), System.Drawing.Image)
+        Me.btnLimpiarRegistro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnLimpiarRegistro.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnLimpiarRegistro.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.btnLimpiarRegistro.Location = New System.Drawing.Point(8, 143)
+        Me.btnLimpiarRegistro.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnLimpiarRegistro.Location = New System.Drawing.Point(6, 248)
+        Me.btnLimpiarRegistro.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnLimpiarRegistro.Name = "btnLimpiarRegistro"
-        Me.btnLimpiarRegistro.Size = New System.Drawing.Size(124, 49)
+        Me.btnLimpiarRegistro.Size = New System.Drawing.Size(124, 96)
         Me.btnLimpiarRegistro.TabIndex = 4
-        Me.btnLimpiarRegistro.Text = "Limpiar"
+        Me.btnLimpiarRegistro.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnLimpiarRegistro.UseVisualStyleBackColor = True
         '
         'btnModificarRegistro
         '
+        Me.btnModificarRegistro.BackgroundImage = CType(resources.GetObject("btnModificarRegistro.BackgroundImage"), System.Drawing.Image)
+        Me.btnModificarRegistro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnModificarRegistro.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnModificarRegistro.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.btnModificarRegistro.Location = New System.Drawing.Point(8, 83)
+        Me.btnModificarRegistro.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnModificarRegistro.Location = New System.Drawing.Point(8, 145)
+        Me.btnModificarRegistro.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnModificarRegistro.Name = "btnModificarRegistro"
-        Me.btnModificarRegistro.Size = New System.Drawing.Size(124, 55)
+        Me.btnModificarRegistro.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.btnModificarRegistro.Size = New System.Drawing.Size(124, 88)
         Me.btnModificarRegistro.TabIndex = 1
-        Me.btnModificarRegistro.Text = "Modificar"
+        Me.btnModificarRegistro.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnModificarRegistro.UseVisualStyleBackColor = True
         '
         'btnGuardarRegistro
         '
+        Me.btnGuardarRegistro.BackgroundImage = CType(resources.GetObject("btnGuardarRegistro.BackgroundImage"), System.Drawing.Image)
+        Me.btnGuardarRegistro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnGuardarRegistro.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnGuardarRegistro.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.btnGuardarRegistro.Location = New System.Drawing.Point(8, 26)
+        Me.btnGuardarRegistro.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnGuardarRegistro.Location = New System.Drawing.Point(6, 32)
+        Me.btnGuardarRegistro.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnGuardarRegistro.Name = "btnGuardarRegistro"
-        Me.btnGuardarRegistro.Size = New System.Drawing.Size(124, 52)
+        Me.btnGuardarRegistro.Size = New System.Drawing.Size(126, 98)
         Me.btnGuardarRegistro.TabIndex = 0
-        Me.btnGuardarRegistro.Text = "Guardar"
+        Me.btnGuardarRegistro.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnGuardarRegistro.UseVisualStyleBackColor = True
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.Label7.Location = New System.Drawing.Point(16, 386)
+        Me.Label7.Location = New System.Drawing.Point(16, 366)
         Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(59, 20)
@@ -243,7 +283,7 @@ Partial Class RegistroEmpleados
         '
         Me.Label6.AutoSize = True
         Me.Label6.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.Label6.Location = New System.Drawing.Point(22, 337)
+        Me.Label6.Location = New System.Drawing.Point(22, 318)
         Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(45, 20)
@@ -254,7 +294,7 @@ Partial Class RegistroEmpleados
         '
         Me.Label5.AutoSize = True
         Me.Label5.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.Label5.Location = New System.Drawing.Point(21, 286)
+        Me.Label5.Location = New System.Drawing.Point(21, 266)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(47, 20)
@@ -265,7 +305,7 @@ Partial Class RegistroEmpleados
         '
         Me.Label4.AutoSize = True
         Me.Label4.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.Label4.Location = New System.Drawing.Point(9, 197)
+        Me.Label4.Location = New System.Drawing.Point(9, 178)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(75, 20)
@@ -276,7 +316,7 @@ Partial Class RegistroEmpleados
         '
         Me.Label3.AutoSize = True
         Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.Label3.Location = New System.Drawing.Point(9, 146)
+        Me.Label3.Location = New System.Drawing.Point(9, 126)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(73, 20)
@@ -287,7 +327,7 @@ Partial Class RegistroEmpleados
         '
         Me.Label2.AutoSize = True
         Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.Label2.Location = New System.Drawing.Point(9, 88)
+        Me.Label2.Location = New System.Drawing.Point(9, 82)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(73, 20)
@@ -313,7 +353,7 @@ Partial Class RegistroEmpleados
         '
         Me.Label9.AutoSize = True
         Me.Label9.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.Label9.Location = New System.Drawing.Point(542, 402)
+        Me.Label9.Location = New System.Drawing.Point(714, 402)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(67, 20)
         Me.Label9.TabIndex = 15
@@ -321,7 +361,9 @@ Partial Class RegistroEmpleados
         '
         'txtBuscar
         '
-        Me.txtBuscar.Location = New System.Drawing.Point(616, 397)
+        Me.txtBuscar.Location = New System.Drawing.Point(788, 398)
+        Me.txtBuscar.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txtBuscar.MaxLength = 13
         Me.txtBuscar.Name = "txtBuscar"
         Me.txtBuscar.Size = New System.Drawing.Size(223, 26)
         Me.txtBuscar.TabIndex = 16
@@ -330,7 +372,7 @@ Partial Class RegistroEmpleados
         '
         Me.Label10.AutoSize = True
         Me.Label10.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.Label10.Location = New System.Drawing.Point(40, 162)
+        Me.Label10.Location = New System.Drawing.Point(35, 162)
         Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(40, 20)
@@ -370,7 +412,7 @@ Partial Class RegistroEmpleados
         '
         'txtDescripcion
         '
-        Me.txtDescripcion.Location = New System.Drawing.Point(106, 223)
+        Me.txtDescripcion.Location = New System.Drawing.Point(106, 222)
         Me.txtDescripcion.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtDescripcion.Multiline = True
         Me.txtDescripcion.Name = "txtDescripcion"
@@ -419,7 +461,7 @@ Partial Class RegistroEmpleados
         Me.GroupBox4.Controls.Add(Me.txtMarca)
         Me.GroupBox4.Controls.Add(Me.txtNumero)
         Me.GroupBox4.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.GroupBox4.Location = New System.Drawing.Point(528, 18)
+        Me.GroupBox4.Location = New System.Drawing.Point(682, 18)
         Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -433,31 +475,45 @@ Partial Class RegistroEmpleados
         Me.GroupBox5.Controls.Add(Me.btnLimpiar)
         Me.GroupBox5.Controls.Add(Me.btnGuardar)
         Me.GroupBox5.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.GroupBox5.Location = New System.Drawing.Point(354, 186)
+        Me.GroupBox5.Location = New System.Drawing.Point(354, 20)
+        Me.GroupBox5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(138, 157)
+        Me.GroupBox5.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.GroupBox5.Size = New System.Drawing.Size(138, 322)
         Me.GroupBox5.TabIndex = 11
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Operaciones"
         '
         'btnLimpiar
         '
+        Me.btnLimpiar.BackgroundImage = CType(resources.GetObject("btnLimpiar.BackgroundImage"), System.Drawing.Image)
+        Me.btnLimpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnLimpiar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.btnLimpiar.Location = New System.Drawing.Point(6, 92)
+        Me.btnLimpiar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnLimpiar.Location = New System.Drawing.Point(8, 184)
+        Me.btnLimpiar.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnLimpiar.Name = "btnLimpiar"
-        Me.btnLimpiar.Size = New System.Drawing.Size(124, 49)
+        Me.btnLimpiar.Size = New System.Drawing.Size(124, 99)
         Me.btnLimpiar.TabIndex = 4
-        Me.btnLimpiar.Text = "Limpiar"
+        Me.btnLimpiar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btnLimpiar.UseVisualStyleBackColor = True
         '
         'btnGuardar
         '
+        Me.btnGuardar.BackgroundImage = CType(resources.GetObject("btnGuardar.BackgroundImage"), System.Drawing.Image)
+        Me.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnGuardar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.btnGuardar.Location = New System.Drawing.Point(8, 26)
+        Me.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnGuardar.Location = New System.Drawing.Point(8, 46)
+        Me.btnGuardar.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnGuardar.Name = "btnGuardar"
-        Me.btnGuardar.Size = New System.Drawing.Size(124, 52)
+        Me.btnGuardar.Size = New System.Drawing.Size(124, 100)
         Me.btnGuardar.TabIndex = 0
-        Me.btnGuardar.Text = "Guardar plan"
+        Me.btnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btnGuardar.UseVisualStyleBackColor = True
         '
         'RegistroEmpleados
@@ -465,7 +521,7 @@ Partial Class RegistroEmpleados
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1206, 777)
+        Me.ClientSize = New System.Drawing.Size(1206, 770)
         Me.Controls.Add(Me.txtBuscar)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.GroupBox4)
@@ -474,7 +530,9 @@ Partial Class RegistroEmpleados
         Me.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.MinimumSize = New System.Drawing.Size(1206, 770)
         Me.Name = "RegistroEmpleados"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "RegistroEmpleados"
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.dtsEmpleados, System.ComponentModel.ISupportInitialize).EndInit()
@@ -491,7 +549,6 @@ Partial Class RegistroEmpleados
     End Sub
 
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents dtsEmpleados As DataGridView
     Friend WithEvents txtNombreRegistro As TextBox
     Friend WithEvents txtApellidosRegistro As TextBox
     Friend WithEvents txtDireccionRegistro As TextBox
@@ -527,4 +584,5 @@ Partial Class RegistroEmpleados
     Friend WithEvents GroupBox5 As GroupBox
     Friend WithEvents btnLimpiar As Button
     Friend WithEvents btnGuardar As Button
+    Friend WithEvents dtsEmpleados As DataGridView
 End Class
